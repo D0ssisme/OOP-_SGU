@@ -1,8 +1,9 @@
 public class testproject {
     public static void main(String[] args) {
-        DSNV danhsach=new DSNV();
+        DSQuat danhsach=new DSQuat();
         danhsach.nhap();
         danhsach.xuat();
+
     }
 
 }

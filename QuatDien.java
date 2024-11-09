@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 public class QuatDien extends Quat {
     private int socanhquat;
-    private String chedogio;
+    private String dodaicanhquat;
 
     public int getSoCanhQuat() {
         return socanhquat;
     }
 
     public String getCheDoGio() {
-        return chedogio;
+        return dodaicanhquat;
     }
 
     public void setSoCanhQuat(int socanhquat) {
@@ -17,7 +17,7 @@ public class QuatDien extends Quat {
     }
 
     public void setCheDoGio(String chedogio) {
-        this.chedogio = chedogio;
+        this.dodaicanhquat = chedogio;
 
     }
 
@@ -26,38 +26,35 @@ public class QuatDien extends Quat {
     }
 
     public QuatDien(String masp, String tensp, String ngaysanxuat, String soluong, double gia, String thuonghieu,
-            String trongluong, String congsuat,int socanhquat,String chedogio)
-    {
-        super(masp,tensp,ngaysanxuat,soluong,gia,thuonghieu,trongluong,congsuat);
-        this.socanhquat=socanhquat;
-        this.chedogio=chedogio;
+            String trongluong, String congsuat, int socanhquat, String chedogio) {
+        super(masp, tensp, ngaysanxuat, soluong, gia, thuonghieu, trongluong, congsuat);
+        this.socanhquat = socanhquat;
+        this.dodaicanhquat = chedogio;
 
     }
-    public QuatDien(QuatDien temp)
-    {
-        super((Quat)temp);
-        socanhquat=temp.socanhquat;
-        chedogio=temp.chedogio;
+
+    public QuatDien(QuatDien temp) {
+        super((Quat) temp);
+        socanhquat = temp.socanhquat;
+        dodaicanhquat = temp.dodaicanhquat;
 
     }
-    public void nhap()
-    {
+
+    public void nhap() {
         super.nhap();
-        Scanner scanner=new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.print("so canh quat : ");
-        socanhquat=scanner.nextInt();
+        socanhquat = scanner.nextInt();
+        scanner.nextLine();
         System.out.print("che do gio : ");
-        chedogio=scanner.nextLine();
-
-
-    }
-    public void xuat()
-    {
-        super.xuat();
-        System.out.printf(""+socanhquat,chedogio);
-
-
+        dodaicanhquat = scanner.nextLine();
 
     }
 
+    public void xuat() {
+        super.xuat(); // Gọi phương thức xuat() của lớp cha để in các thông tin chung
+        // In các thông tin riêng của QuatDien
+        System.out.printf("%-16s %-17s %-17s %-17s%n",
+                socanhquat, dodaicanhquat, "-", "-");
+    }
 }

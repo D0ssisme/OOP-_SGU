@@ -6,7 +6,7 @@ abstract public class Quat {
     private String ngaysanxuat;
     private String soluong;
     private double gia;
-    private String thuonghieu;
+    private String mathuonghieu;
     private String trongluong;
     private String congsuat;
 
@@ -39,7 +39,7 @@ abstract public class Quat {
         this.ngaysanxuat = temp.ngaysanxuat;
         this.soluong = temp.soluong;
         this.gia = temp.gia;
-        this.thuonghieu = temp.thuonghieu;
+        this.mathuonghieu = temp.mathuonghieu;
         this.trongluong = temp.trongluong;
         this.congsuat = temp.congsuat;
 
@@ -52,7 +52,7 @@ abstract public class Quat {
         this.ngaysanxuat = ngaysanxuat;
         this.soluong = soluong;
         this.gia = gia;
-        this.thuonghieu = thuonghieu;
+        this.mathuonghieu = thuonghieu;
         this.trongluong = trongluong;
         this.congsuat = congsuat;
     }
@@ -69,18 +69,19 @@ abstract public class Quat {
         soluong = scanner.nextLine();
         System.out.print("gia : ");
         gia = scanner.nextDouble();
+        scanner.nextLine();
         System.out.print("thuong hieu : ");
-        thuonghieu = scanner.nextLine();
+        mathuonghieu = scanner.nextLine();
         System.out.print("trong luong : ");
-        trongluong=scanner.nextLine();
+        trongluong = scanner.nextLine();
         System.out.print("cong suat : ");
-        congsuat=scanner.nextLine();
+        congsuat = scanner.nextLine();
 
     }
-    public void xuat()
-    {
-        System.out.printf("%-14s %-19s %-17s %-10s %-10.2f %-15s %-13s %-13s\n", 
-            masp, tensp, ngaysanxuat, soluong, gia, thuonghieu, trongluong, congsuat);
+
+    public void xuat() {
+        System.out.printf("%-14s %-19s %-17s %-10s %-10.2f %-15s %-13s %-13s",
+                masp, tensp, ngaysanxuat, soluong, gia, mathuonghieu, trongluong, congsuat, "", "", "", "");
 
     }
 
