@@ -31,12 +31,12 @@ public class DSPhieuNhap {
         }
 
     }
-    public void xuat(DSChiTietPhieuNhap temp)
+    public void xuat( )
     {
 
         for(int i=0;i<n;i++)
         {
-           ds[i].xuat(temp);
+           ds[i].xuat();
 
         }
     }
