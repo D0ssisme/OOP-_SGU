@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 public class QuatDien extends Quat {
     private int socanhquat;
-    private String dodaicanhquat;
+    private int dodaicanhquat;
 
     public int getSoCanhQuat() {
         return socanhquat;
     }
 
-    public String getCheDoGio() {
+    public int getDoDaiCanhQuat() {
         return dodaicanhquat;
     }
 
@@ -16,8 +16,8 @@ public class QuatDien extends Quat {
         this.socanhquat = socanhquat;
     }
 
-    public void setCheDoGio(String chedogio) {
-        this.dodaicanhquat = chedogio;
+    public void setCheDoGio(int dodaicanhquat) {
+        this.dodaicanhquat = dodaicanhquat;
 
     }
 
@@ -25,11 +25,11 @@ public class QuatDien extends Quat {
         super();
     }
 
-    public QuatDien(String masp, String tensp, String ngaysanxuat, String soluong, double gia, String thuonghieu,
-            String trongluong, String congsuat, int socanhquat, String chedogio) {
+    public QuatDien(String masp, String tensp, String ngaysanxuat, int soluong, double gia, String thuonghieu,
+            String trongluong, String congsuat, int socanhquat, int dodaicanhquat) {
         super(masp, tensp, ngaysanxuat, soluong, gia, thuonghieu, trongluong, congsuat);
         this.socanhquat = socanhquat;
-        this.dodaicanhquat = chedogio;
+        this.dodaicanhquat = dodaicanhquat;
 
     }
 
@@ -47,7 +47,7 @@ public class QuatDien extends Quat {
         socanhquat = scanner.nextInt();
         scanner.nextLine();
         System.out.print("che do gio : ");
-        dodaicanhquat = scanner.nextLine();
+        dodaicanhquat = scanner.nextInt();
 
     }
 

@@ -26,7 +26,7 @@ public class QuatHoiNuoc extends Quat {
         super();
     }
 
-    public QuatHoiNuoc(String masp, String tensp, String ngaysanxuat, String soluong, double gia, String thuonghieu,
+    public QuatHoiNuoc(String masp, String tensp, String ngaysanxuat, int soluong, double gia, String thuonghieu,
             String trongluong, String congsuat, String dungtich, String chedophun) {
         super(masp, tensp, ngaysanxuat, soluong, gia, thuonghieu, trongluong, congsuat);
         this.dungtich = dungtich;

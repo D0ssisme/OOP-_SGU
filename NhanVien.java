@@ -15,6 +15,18 @@ public class NhanVien
     {
         return manv;
     }
+    public String getHoNV()
+    {
+        return honv;
+    }
+    public String getTenNV()
+    {
+        return honv;
+    }
+    public double getLuong()
+    {
+        return luong;
+    }
 
     public void setMaNV(String manv)
     {
@@ -51,22 +63,22 @@ public class NhanVien
     public void nhap()
     {
         Scanner scanner=new Scanner(System.in);
-        System.out.print("manv : ");
+        System.out.print("mã nhân viên : ");
         manv=scanner.nextLine();
-        System.out.print("honv : ");
+        System.out.print("họ nhân viên : ");
         honv=scanner.nextLine();
-        System.out.print("tennv : ");
+        System.out.print("tên nhân viên : ");
         tennv=scanner.nextLine();
-        System.out.print("luong : ");
+        System.out.print("lương : ");
         luong=scanner.nextDouble();
         scanner.nextLine();
-        System.out.print("chuc vu : ");
+        System.out.print("chức vụ : ");
         chucvu=scanner.nextLine();
-        System.out.print("so dien thoai : ");
+        System.out.print("số điện thoại : ");
         sodienthoai=scanner.nextLine();
-        System.out.print("cccd : ");
+        System.out.print("căn cước công dân : ");
         cccd=scanner.nextLine();
-        System.out.print("dia chi : ");
+        System.out.print("địa chỉ : ");
         diachi=scanner.nextLine();
 
     }

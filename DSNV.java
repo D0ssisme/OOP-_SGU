@@ -26,9 +26,7 @@ public class DSNV {
         System.out.print("nhap so luong nhan vien : ");
         n = scanner.nextInt();
         ds = new NhanVien[n];
-        if (n <= 0) {
-            return;
-        }
+
         for (int i = 0; i < n; i++) {
             ds[i] = new NhanVien();
             ds[i].nhap();

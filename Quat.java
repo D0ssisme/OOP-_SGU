@@ -4,12 +4,13 @@ abstract public class Quat {
     private String masp;
     private String tensp;
     private String ngaysanxuat;
-    private String soluong;
+    private int soluong;
     private double gia;
     private String mathuonghieu;
     private String trongluong;
     private String congsuat;
 
+    public String getTenSP(){return tensp;};
     public String getMaSP() {
         return masp;
 
@@ -18,7 +19,14 @@ abstract public class Quat {
     public double getGia() {
         return gia;
     }
-
+    public int getSoLuong()
+    {
+        return soluong;
+    }
+public String getMaThuongHieu()
+{
+    return mathuonghieu;
+}
     public void setMaSP(String masp) {
         this.masp = masp;
 
@@ -45,7 +53,7 @@ abstract public class Quat {
 
     }
 
-    public Quat(String masp, String tensp, String ngaysanxuat, String soluong, double gia, String thuonghieu,
+    public Quat(String masp, String tensp, String ngaysanxuat, int soluong, double gia, String thuonghieu,
             String trongluong, String congsuat) {
         this.masp = masp;
         this.tensp = tensp;
@@ -66,7 +74,7 @@ abstract public class Quat {
         System.out.print("ngay san xuat : ");
         ngaysanxuat = scanner.nextLine();
         System.out.print("so luong : ");
-        soluong = scanner.nextLine();
+        soluong = scanner.nextInt();
         System.out.print("gia : ");
         gia = scanner.nextDouble();
         scanner.nextLine();
