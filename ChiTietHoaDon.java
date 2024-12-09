@@ -1,3 +1,5 @@
+
+import java.util.Arrays;
 import java.util.Scanner;
 public class ChiTietHoaDon {
     private String mahd;
@@ -18,16 +20,41 @@ public class ChiTietHoaDon {
         return thanhtien;
     }
     public String getMasp(){return masp;}
-
-    public void  timDonGia(String masp)
+    public void setMaHD(String mahd)
     {
-        if(DSQuat.danhsachquat.length>0)
+        this.mahd=mahd;
+
+    }
+    public void setMaSp(String masp)
+    {
+        this.masp=masp;
+    }
+    public void setSoLuong(int soluong)
+    {
+        this.soluong=soluong;
+
+    }
+    public void setDonGia(double dongia)
+    {
+        this.dongia=dongia;
+    }
+    public void setThanhTien(double thanhtien)
+    {
+        this.thanhtien=thanhtien;
+    }
+
+
+    public void tinhDonGia(String masp)
+    {
+        DSQuat dsquat=new DSQuat();
+        dsquat.dsquat=Arrays.copyOf(QLBH.dsquat,QLBH.dsquat.length);
+        dsquat.n=QLBH.dsquat.length;
+
+        for (Quat q : dsquat.dsquat)
         {
-            for (Quat q : DSQuat.danhsachquat) {
-                if (q.getMaSP().equals(masp)) {
-                    this.dongia = q.getGia();
-                    return;
-                }
+            if(q.getMaSP().equals(masp))
+            {
+                this.dongia=q.getGia();
             }
         }
 
@@ -37,11 +64,7 @@ public class ChiTietHoaDon {
     {
         this.thanhtien=this.soluong*this.dongia;
     }
-    public void setMaHD(String mahd)
-    {
-        this.mahd=mahd;
 
-    }
     public ChiTietHoaDon()
     {
 
@@ -65,38 +88,71 @@ public class ChiTietHoaDon {
         this.thanhtien=thanhtien;
     }
 
+
     public void nhap(String mahd)
     {
+        DSQuat dsQuat=new DSQuat();
+        dsQuat.dsquat=Arrays.copyOf(QLBH.dsquat, QLBH.dsquat.length);
+        dsQuat.n= QLBH.dsquat.length;
         this.mahd=mahd;
         Scanner scanner=new Scanner(System.in);
         System.out.print("nhập mã sản phẩm : ");
         masp=scanner.nextLine();
-        timDonGia(masp);
-        System.out.print("nhập số lượng : ");
-        soluong=scanner.nextInt();
+        tinhDonGia(masp);
+        do{
+            System.out.print("nhập số lượng : ");
+            soluong=scanner.nextInt();
+            if(dsQuat.checksoluongtonkho(masp,soluong)==false)
+            {
+                System.out.print(" hiện số lượng trong kho không đủ chỉ còn "+dsQuat.timKiemTheoMaSP(this.masp).getSoLuong());
+            }
+
+
+        }
+        while(dsQuat.checksoluongtonkho(masp,soluong)==false);
+        dsQuat.timKiemTheoMaSP(this.masp).setSoLuong(dsQuat.timKiemTheoMaSP(this.masp).getSoLuong()-soluong);
+        tinhDonGia(masp);
         tinhThanhTien();
     }
     public void nhap()
     {
+        DSQuat dsQuat=new DSQuat();
+        dsQuat.dsquat=Arrays.copyOf(QLBH.dsquat, QLBH.dsquat.length);
+        dsQuat.n= QLBH.dsquat.length;
+
         Scanner scanner=new Scanner(System.in);
         System.out.print("mã hóa đơn :");
         mahd=scanner.nextLine();
         System.out.print("mã sản phẩm : ");
         masp=scanner.nextLine();
-        timDonGia(masp);
-        System.out.print("số lượng");
-        soluong=scanner.nextInt();
+        tinhDonGia(masp);
+        do {
+            System.out.print("nhập số lượng : ");
+            soluong = scanner.nextInt();
+
+                if (dsQuat.checksoluongtonkho(masp, soluong) == false) {
+                    System.out.print(" hiện số lượng trong kho không đủ chỉ còn : " + dsQuat.timKiemTheoMaSP(this.masp).getSoLuong());
+                    System.out.println("\n");
+                }
+
+
+
+        }
+        while(dsQuat.checksoluongtonkho(masp,soluong)==false);
+        dsQuat.timKiemTheoMaSP(this.masp).setSoLuong(dsQuat.timKiemTheoMaSP(this.masp).getSoLuong()-soluong);
+        tinhDonGia(masp);
         tinhThanhTien();
     }
-    public void xuat()
-    {
-        System.out.print("mã hóa đơn : "+mahd);
-        System.out.print("mã sản phẩm : "+masp);
-        System.out.print("số lượng : "+soluong);
-        System.out.print("đơn giá : "+dongia);
-        System.out.print("thành tiền : "+ thanhtien);
-
+    public void xuat() {
+        System.out.println("----- Chi Tiết Hóa Đơn -----");
+        System.out.printf("%-15s: %s\n", "Mã hóa đơn", mahd);
+        System.out.printf("%-15s: %s\n", "Mã sản phẩm", masp);
+        System.out.printf("%-15s: %d\n", "Số lượng", soluong);
+        System.out.printf("%-15s: %.0f VND\n", "Đơn giá", dongia);
+        System.out.printf("%-15s: %.0f VND\n", "Thành tiền", thanhtien);
+        System.out.println("---------------------------");
     }
+
 
 
 

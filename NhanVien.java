@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 public class NhanVien
 {
@@ -32,6 +33,35 @@ public class NhanVien
     {
         this.manv=manv;
     }
+    public void setHoNV(String honv)
+    {
+        this.honv=honv;
+    }
+    public void setTenNV(String tennv)
+    {
+        this.tennv=tennv;
+    }
+    public void setLuong(double luong)
+    {
+        this.luong=luong;
+    }
+    public void setChucVu(String chucvu)
+    {
+        this.chucvu=chucvu;
+    }
+    public void setSoDienThoai(String sodienthoai)
+    {
+        this.sodienthoai=sodienthoai;
+    }
+    public void setCCCD(String cccd)
+    {
+        this.cccd=cccd;
+    }
+    public void setDiaChi(String diachi)
+    {
+        this.diachi=diachi;
+    }
+
 
     public NhanVien()
     {
@@ -63,8 +93,19 @@ public class NhanVien
     public void nhap()
     {
         Scanner scanner=new Scanner(System.in);
-        System.out.print("mã nhân viên : ");
-        manv=scanner.nextLine();
+        DSNV ds=new DSNV();
+        ds.dsnhanvien=Arrays.copyOf(QLBH.dsnhanvien,QLBH.dsnhanvien.length);
+        do{
+            System.out.print("mã nhân viên : ");
+            manv=scanner.nextLine();
+            if(ds.checkmanv(manv)==false)
+            {
+                System.out.println(" mã nhân viên đã tồn tại !");
+            }
+
+        }
+        while(ds.checkmanv(manv)==false);
+
         System.out.print("họ nhân viên : ");
         honv=scanner.nextLine();
         System.out.print("tên nhân viên : ");
@@ -83,8 +124,17 @@ public class NhanVien
 
     }
     public void xuat() {
-        System.out.printf("%-10s %-15s %-15s %-10.2f %-15s %-15s %-15s %-20s\n",
-                manv, honv, tennv, luong, chucvu, sodienthoai, cccd, diachi);
+        System.out.println("----- Thông Tin Nhân Viên -----");
+        System.out.printf("%-15s: %s\n", "Mã nhân viên", manv);
+        System.out.printf("%-15s: %s\n", "Họ nhân viên", honv);
+        System.out.printf("%-15s: %s\n", "Tên nhân viên", tennv);
+        System.out.printf("%-15s: %.2f\n", "Lương", luong);
+        System.out.printf("%-15s: %s\n", "Chức vụ", chucvu);
+        System.out.printf("%-15s: %s\n", "Số điện thoại", sodienthoai);
+        System.out.printf("%-15s: %s\n", "CCCD", cccd);
+        System.out.printf("%-15s: %s\n", "Địa chỉ", diachi);
+        System.out.println("--------------------------------");
+        System.out.println("\n");
     }
 
 

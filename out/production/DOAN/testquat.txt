@@ -1,0 +1,11 @@
+10
+quatdien,111,quạt J,12/11/2024,10,100000,MH100,10KG,100W,5,10m
+quatdien,112,quạt U,11/05/2024,15,20000,MH800,12KG,100W,3,10m
+quatdien,113,quạt UK,01/12/2024,5,30000,MH200,15KG,100W,2,10m
+quathoinuoc,114,quạt US,1/05/2024,17,20000,MH200,18KG,100W,5 lít,phun sương
+quathoinuoc,115,quạt T,23/06/2024,20,100000,MH200,10KG,100W,5 lít,phun sương
+quathoinuoc,117,quạt E,22/05/2024,11,20000,MH100,15KG,100W,5 lít,phun sương
+quathoinuoc,118,quạt Q,11/12/2024,16,30000,MH200,15KG,100W,5 lít,phun sương
+quathoinuoc,119,quạt W,03/11/2024,58,20000,MH800,11KG,100W,5 lít,phun sương
+quathoinuoc,110,quạt B,06/10/2024,24,30000,MH300,10KG,100W,5 lít,phun sương
+quathoinuoc,121,quạt M,23/04/2024,14,30000,MH200,20KG,100W,5 lít,phun sương

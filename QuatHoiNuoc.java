@@ -41,20 +41,26 @@ public class QuatHoiNuoc extends Quat {
 
     }
 
+    public void baoTri()
+    {
+        System.out.print("thay nước và làm sạch bộ lọc ");
+    }
+
+
     public void nhap() {
         Scanner scanner = new Scanner(System.in);
         super.nhap();
-        System.out.print("dung tich : ");
+        System.out.print("dung tích : ");
         dungtich = scanner.nextLine();
-        System.out.print("che do phun : ");
+        System.out.print("chế độ phun : ");
         chedophun = scanner.nextLine();
     }
 
     public void xuat() {
         super.xuat(); // Gọi phương thức xuat() của lớp cha để in các thông tin chung
         // In các thông tin riêng của QuatHoiNuoc
-        System.out.printf("%-16s %-17s %-17s %-17s%n",
-                "-", "-", dungtich, chedophun);
+        System.out.printf("%-16s %-16s %-17s %-16s%n",
+                "-", "-",  dungtich, chedophun);
     }
 
 

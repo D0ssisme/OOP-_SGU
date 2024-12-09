@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 public class NhaCungCap {
     private String mancc;
@@ -11,6 +12,18 @@ public class NhaCungCap {
     public void setMaNCC(String mancc)
     {
         this.mancc=mancc;
+    }
+    public void setTenNCC(String tenncc)
+    {
+        this.tenncc=tenncc;
+    }
+    public void setSDTNCC(String sdt)
+    {
+        this.sdt=sdt;
+    }
+    public void setDiaChiNCC(String diachi)
+    {
+        this.diachi=diachi;
     }
     public NhaCungCap()
     {
@@ -35,8 +48,19 @@ public class NhaCungCap {
     public void nhap()
     {
         Scanner scanner=new Scanner(System.in);
-        System.out.print("mã nhà cung cấp : ");
-        mancc=scanner.nextLine();
+        DSNCC ds=new DSNCC();
+        ds.dsnhacungcap= Arrays.copyOf(QLBH.dsnhacungcap,QLBH.dsnhacungcap.length);
+        do{
+            System.out.print("mã nhà cung cấp : ");
+            mancc=scanner.nextLine();
+            if(ds.checkmancc(mancc)==false)
+            {
+                System.out.println(" mã nhà cung cấp đã tồn tại ! ");
+
+            }
+
+        }while(ds.checkmancc(mancc)==false);
+
         System.out.print("tên nhà cung cấp");
         tenncc=scanner.nextLine();
         System.out.print("số điện thoại : ");
@@ -44,13 +68,13 @@ public class NhaCungCap {
         System.out.print("địa chỉ : ");
         diachi=scanner.nextLine();
     }
-    public void xuat()
-    {
-        System.out.println("mã nhà cung cấp : "+mancc);
-        System.out.println("tên nhà cung cấp :"+tenncc);
-        System.out.println("số điện thoại : "+sdt);
-        System.out.println("địa chỉ : "+diachi);
-
-
+    public void xuat() {
+        System.out.println("----- Thông Tin Nhà Cung Cấp -----");
+        System.out.printf("%-20s: %s\n", "Mã nhà cung cấp", mancc);
+        System.out.printf("%-20s: %s\n", "Tên nhà cung cấp", tenncc);
+        System.out.printf("%-20s: %s\n", "Số điện thoại", sdt);
+        System.out.printf("%-20s: %s\n", "Địa chỉ", diachi);
+        System.out.println("-----------------------------------");
     }
+
 }

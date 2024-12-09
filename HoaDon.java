@@ -1,3 +1,5 @@
+import javax.print.DocFlavor;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class HoaDon {
@@ -10,17 +12,14 @@ public class HoaDon {
     {
         return tongtien;
     }
-    public void tinhTongTien(String mahd)
+
+    public String getNgayLapHD()
     {
-        double tong=0;
-        for(ChiTietHoaDon q:DSChiTietHoaDon.dschitiethoadon)
-        {
-            if(q.getMaHD().equals(mahd))
-            {
-                tong=tong+q.getThanhTien();
-            }
-        }
-        this.tongtien=tong;
+        return ngaylaphd;
+    }
+    public String getMaNV()
+    {
+        return manv;
     }
 
     public String getMaHD()
@@ -34,6 +33,22 @@ public class HoaDon {
     public void setMahd(String mahd)
     {
         this.mahd=mahd;
+    }
+    public void setngayLapHD(String ngaylaphd)
+    {
+        this.ngaylaphd=ngaylaphd;
+    }
+    public void setMaNV(String manv)
+    {
+        this.manv=manv;
+    }
+    public void setMaKH(String makh)
+    {
+        this.makh=makh;
+    }
+    public void setTongTien(double tongtien)
+    {
+        this.tongtien=tongtien;
     }
     public HoaDon()
     {
@@ -58,26 +73,66 @@ public class HoaDon {
         this.tongtien=temp.tongtien;
 
     }
+
     public void nhap()
     {
+        DSHoaDon ds=new DSHoaDon();
+        ds.dshoadon= Arrays.copyOf(QLBH.dshoadon,QLBH.dshoadon.length);
+        ds.n=QLBH.dshoadon.length;
         Scanner scanner=new Scanner(System.in);
+        do{
         System.out.print("nhập mã hóa đơn : ");
         mahd=scanner.nextLine();
-        tinhTongTien(mahd);
+        if(ds.checkmahd(mahd)==false)
+        {
+            System.out.println(" mã hóa đơn đã tồn tại ! ");
+        }
+        }
+        while(ds.checkmahd(mahd)==false);
+
+
         System.out.print("nhập ngày lập hóa đơn : ");
         ngaylaphd=scanner.nextLine();
         System.out.print("nhập mã nhân viên : ");
         manv=scanner.nextLine();
         System.out.print("nhập mã khách hàng ");
         makh=scanner.nextLine();
+        System.out.print(" nhập tổng tien : ");
+        tongtien=scanner.nextDouble();
     }
-    public void xuat()
-    {
-        System.out.print("mã hóa đơn : "+mahd);
-        System.out.print("ngày lập hóa đơn : "+ngaylaphd);
-        System.out.print("mã nhân viên : "+manv);
-        System.out.print("mã khách hàng : "+makh);
-        System.out.print("tổng tiền : "+tongtien);
 
+
+
+    public void nhap(String mahd)
+    {
+     Scanner scanner=new Scanner(System.in);
+        this.mahd=mahd;
+        System.out.print("nhập ngày lập hóa đơn : ");
+        ngaylaphd=scanner.nextLine();
+        System.out.print("nhập mã nhân viên : ");
+        manv=scanner.nextLine();
+        System.out.print("nhập mã khách hàng ");
+        makh=scanner.nextLine();
+        System.out.print(" nhập tổng tien : ");
+        tongtien=scanner.nextDouble();
     }
+
+
+
+
+
+
+    public void xuat() {
+        System.out.println("                    HÓA ĐƠN BÁN HÀNG                  ");
+        System.out.println("========================================================");
+        System.out.printf("| %-25s | %-25s |\n", "Mã hóa đơn", mahd);
+        System.out.printf("| %-25s | %-25s |\n", "Ngày lập hóa đơn", ngaylaphd);
+        System.out.printf("| %-25s | %-25s |\n", "Mã nhân viên", manv);
+        System.out.printf("| %-25s | %-25s |\n", "Mã khách hàng", makh);
+        System.out.printf("| %-25s | %-21.0f VND |\n", "Tổng tiền", tongtien);
+        System.out.println("========================================================");
+        System.out.println("\n");
+    }
+
+
 }

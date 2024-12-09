@@ -1,21 +1,21 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 abstract public class Quat {
-    private String masp;
-    private String tensp;
-    private String ngaysanxuat;
-    private int soluong;
-    private double gia;
-    private String mathuonghieu;
-    private String trongluong;
-    private String congsuat;
+    public String masp;
+    public String tensp;
+    public String ngaysanxuat;
+    public int soluong;
+    public double gia;
+    public String mathuonghieu;
+    public String trongluong;
+    public String congsuat;
 
+
+    public abstract void baoTri();
+    public String getNXS() {return ngaysanxuat;}
     public String getTenSP(){return tensp;};
-    public String getMaSP() {
-        return masp;
-
-    }
-
+    public String getMaSP() {return masp;}
     public double getGia() {
         return gia;
     }
@@ -23,13 +23,38 @@ abstract public class Quat {
     {
         return soluong;
     }
-public String getMaThuongHieu()
+    public String getMaThuongHieu()
 {
     return mathuonghieu;
 }
     public void setMaSP(String masp) {
         this.masp = masp;
 
+    }
+    public void setTenSP(String tensp)
+    {
+        this.tensp=tensp;
+    }
+    public void setNgaySanXuat(String ngaysanxuat)
+    {
+        this.ngaysanxuat=ngaysanxuat;
+
+    }
+    public void setSoLuong(int soluong)
+    {
+        this.soluong=soluong;
+    }
+    public void setMathuonghieu(String mathuonghieu)
+    {
+        this.mathuonghieu=mathuonghieu;
+    }
+    public void setTrongLuong(String trongluong)
+    {
+        this.trongluong=trongluong;
+    }
+    public void setCongSuat(String congsuat)
+    {
+        this.congsuat=congsuat;
     }
 
     public void setGia(double gia) {
@@ -67,28 +92,62 @@ public String getMaThuongHieu()
 
     public void nhap() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("masp : ");
-        masp = scanner.nextLine();
-        System.out.print("tensp : ");
+        DSQuat dsQuat=new DSQuat();
+
+
+      do {
+          System.out.print("mã sản phẩm : ");
+          masp = scanner.nextLine();
+          if(dsQuat.checkmasp(masp)==false)
+          {
+              System.out.println("mã sản phẩm đã tồn tại vui lòng nhập lại ! ");
+          }
+      }while(dsQuat.checkmasp(masp)==false);
+        System.out.print("tên sản phẩm : ");
         tensp = scanner.nextLine();
-        System.out.print("ngay san xuat : ");
+        System.out.print("ngày sản xuất : ");
         ngaysanxuat = scanner.nextLine();
-        System.out.print("so luong : ");
+        System.out.print("số lượng : ");
         soluong = scanner.nextInt();
-        System.out.print("gia : ");
+        scanner.nextLine();
+        System.out.print("giá : ");
         gia = scanner.nextDouble();
         scanner.nextLine();
-        System.out.print("thuong hieu : ");
+        System.out.print("mã thương hiệu : ");
         mathuonghieu = scanner.nextLine();
-        System.out.print("trong luong : ");
+        System.out.print("trọng lượng : ");
         trongluong = scanner.nextLine();
-        System.out.print("cong suat : ");
+        System.out.print("công suất : ");
+        congsuat = scanner.nextLine();
+
+    }
+
+
+
+    public void nhap(String masp) {
+        Scanner scanner = new Scanner(System.in);
+        this.masp=masp;
+        System.out.print("tên sản phẩm : ");
+        tensp = scanner.nextLine();
+        System.out.print("ngày sản xuất : ");
+        ngaysanxuat = scanner.nextLine();
+        System.out.print("số lượng : ");
+        soluong = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("giá : ");
+        gia = scanner.nextDouble();
+        scanner.nextLine();
+        System.out.print("mã thương hiệu : ");
+        mathuonghieu = scanner.nextLine();
+        System.out.print("trọng lượng : ");
+        trongluong = scanner.nextLine();
+        System.out.print("công suất : ");
         congsuat = scanner.nextLine();
 
     }
 
     public void xuat() {
-        System.out.printf("%-14s %-19s %-17s %-10s %-10.2f %-15s %-13s %-13s",
+        System.out.printf("%-14s %-19s %-17s %-10s %-10.0f  %-15s %-13s %-13s",
                 masp, tensp, ngaysanxuat, soluong, gia, mathuonghieu, trongluong, congsuat, "", "", "", "");
 
     }

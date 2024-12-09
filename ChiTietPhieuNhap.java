@@ -1,9 +1,10 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ChiTietPhieuNhap {
     private String mapn;
     private String masp;
-    private double soluong;
+    private int soluong;
     private double dongia;
     private double thanhtien;
 
@@ -11,7 +12,7 @@ public class ChiTietPhieuNhap {
     {
 
     }
-    public ChiTietPhieuNhap(String mapn,String masp,double soluong,double dongia)
+    public ChiTietPhieuNhap(String mapn,String masp,int soluong,double dongia)
     {
         this.mapn=mapn;
         this.masp=masp;
@@ -32,7 +33,7 @@ public class ChiTietPhieuNhap {
     {
         return mapn;
     }
-    public double getSoluong()
+    public int getSoluong()
     {
         return soluong;
     }
@@ -48,39 +49,65 @@ public class ChiTietPhieuNhap {
     {
         this.mapn=mapn;
     }
-    public void setSoLuong(double soluong)
+    public void setMaSP(String masp){this.masp=masp;}
+
+    public void setSoLuong(int soluong)
     {
         this.soluong=soluong;
-
-
     }
     public void setDongia(double dongia)
     {
         this.dongia=dongia;
 
     }
+    public void setThanhTien(double thanhtien)
+    {
+        this.thanhtien=thanhtien;
+    }
     public void nhap()
     {
+        DSQuat dsQuat=new DSQuat();
+        dsQuat.dsquat=Arrays.copyOf(QLBH.dsquat,QLBH.dsquat.length);
+        dsQuat.n=QLBH.dsquat.length;
+
         Scanner scanner=new Scanner(System.in);
         System.out.print("nhập mã phiếu nhập : ");
         mapn=scanner.nextLine();
         System.out.print("nhập mã sản phẩm : ");
         masp=scanner.nextLine();
         System.out.print("số lượng : ");
-        soluong=scanner.nextDouble();
+        soluong=scanner.nextInt();
+        dsQuat.timKiemTheoMaSP(masp).setSoLuong(dsQuat.timKiemTheoMaSP(masp).getSoLuong()+soluong);
         System.out.print("đơn giá : ");
         dongia=scanner.nextDouble();
         System.out.print("thành tiền = đơn giá * số lượng ");
     }
-    public void xuat()
+    public void nhap(String mapn)
     {
-        System.out.print("mã phiếu nhập : "+mapn);
-        System.out.print("mã sản phẩm : "+masp);
-        System.out.print("số lượng : "+soluong);
-        System.out.print("đơn giá : "+dongia);
-        System.out.print("thành tiền : "+getThanhTien());
+        Scanner scanner=new Scanner(System.in);
+        DSQuat dsQuat=new DSQuat();
+        dsQuat.dsquat=Arrays.copyOf(QLBH.dsquat,QLBH.dsquat.length);
+        dsQuat.n=QLBH.dsquat.length;
+        this.mapn=mapn;
+        System.out.print("nhập mã sản phẩm : ");
+        masp=scanner.nextLine();
+        System.out.print("số lượng : ");
+        soluong=scanner.nextInt();
+        dsQuat.timKiemTheoMaSP(masp).setSoLuong(dsQuat.timKiemTheoMaSP(masp).getSoLuong()+soluong);
+        System.out.print("đơn giá : ");
+        dongia=scanner.nextDouble();
+        System.out.print("thành tiền = đơn giá * số lượng ");
     }
-
+    public void xuat() {
+        System.out.println("----- Chi Tiết Phiếu Nhập -----");
+        System.out.printf("%-20s: %s\n", "Mã phiếu nhập", mapn);
+        System.out.printf("%-20s: %s\n", "Mã sản phẩm", masp);
+        System.out.printf("%-20s: %d\n", "Số lượng", soluong);
+        System.out.printf("%-20s: %.0f VND\n", "Đơn giá", dongia); // Không có thập phân
+        System.out.printf("%-20s: %.0f VND\n", "Thành tiền", getThanhTien()); // Không có thập phân
+        System.out.println("--------------------------------");
+        System.out.println("\n\n");
+    }
 
 
 

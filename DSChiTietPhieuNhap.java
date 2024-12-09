@@ -1,8 +1,11 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
-public class DSChiTietPhieuNhap {
-    private int n;
-    public static ChiTietPhieuNhap[] dschitietphieunhap =new ChiTietPhieuNhap[1];
+public class DSChiTietPhieuNhap implements DanhSach {
+    public int n;
+    public  ChiTietPhieuNhap[] dschitietphieunhap =new ChiTietPhieuNhap[1];
     public ChiTietPhieuNhap[] getDanhSach()
     {
         return dschitietphieunhap;
@@ -42,6 +45,54 @@ public class DSChiTietPhieuNhap {
             dschitietphieunhap[i].xuat();
         }
     }
+
+
+
+    public void docfile() {
+        int i = 0;
+        String filePath = "chitietphieunhap.txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+
+            String line = reader.readLine();
+            this.dschitietphieunhap = new ChiTietPhieuNhap[Integer.parseInt(line)];
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                this.dschitietphieunhap[i] = new ChiTietPhieuNhap();
+                this.dschitietphieunhap[i].setMaPN(data[0]);
+                this.dschitietphieunhap[i].setMaSP(data[1]);
+                this.dschitietphieunhap[i].setSoLuong(Integer.parseInt(data[2]));
+                this.dschitietphieunhap[i].setDongia(Double.parseDouble(data[3]));
+                this.dschitietphieunhap[i].setThanhTien(Double.parseDouble(data[4]));
+
+                i++;
+            }
+
+            System.out.println("Đã đọc xong!");
+            this.n=i;
+
+
+        } catch (IOException e) {
+            System.out.println("Có lỗi xảy ra khi đọc file: " + e.getMessage());
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public void them()
     {
         dschitietphieunhap = Arrays.copyOf(dschitietphieunhap, dschitietphieunhap.length+1);
@@ -72,12 +123,13 @@ public class DSChiTietPhieuNhap {
 
         }
     }
-    public void sua(String mapnold,String mapnnew)
+    public void sua(String mapn)
     {
-
+Scanner scanner=new Scanner(System.in);
+String mapnnew=scanner.nextLine();
         for(int i=0;i<n;i++)
         {
-            if(dschitietphieunhap[i].getMapn().equals(mapnold))
+            if(dschitietphieunhap[i].getMapn().equals(mapn))
             {
 
                 dschitietphieunhap[i].setMaPN(mapnnew);

@@ -2,35 +2,27 @@ import java.util.Scanner;
 
 public class QuatDien extends Quat {
     private int socanhquat;
-    private int dodaicanhquat;
+    private String dodaicanhquat;
 
     public int getSoCanhQuat() {
         return socanhquat;
     }
-
-    public int getDoDaiCanhQuat() {
-        return dodaicanhquat;
-    }
+    public String getDoDaiCanhQuat() {return dodaicanhquat;}
 
     public void setSoCanhQuat(int socanhquat) {
         this.socanhquat = socanhquat;
     }
-
-    public void setCheDoGio(int dodaicanhquat) {
-        this.dodaicanhquat = dodaicanhquat;
-
-    }
+    public void setDoDaiCanhQuat(String dodaicanhquat) {this.dodaicanhquat = dodaicanhquat;}
 
     public QuatDien() {
         super();
     }
 
     public QuatDien(String masp, String tensp, String ngaysanxuat, int soluong, double gia, String thuonghieu,
-            String trongluong, String congsuat, int socanhquat, int dodaicanhquat) {
+            String trongluong, String congsuat, int socanhquat, String dodaicanhquat) {
         super(masp, tensp, ngaysanxuat, soluong, gia, thuonghieu, trongluong, congsuat);
         this.socanhquat = socanhquat;
         this.dodaicanhquat = dodaicanhquat;
-
     }
 
     public QuatDien(QuatDien temp) {
@@ -40,14 +32,19 @@ public class QuatDien extends Quat {
 
     }
 
+    public void baoTri()
+    {
+        System.out.print("vệ sinh cánh quạt thay moter mới ");
+    }
+
     public void nhap() {
         super.nhap();
         Scanner scanner = new Scanner(System.in);
-        System.out.print("so canh quat : ");
+        System.out.print("số cánh quạt : ");
         socanhquat = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("che do gio : ");
-        dodaicanhquat = scanner.nextInt();
+        System.out.print("độ dài cánh quạt : ");
+        dodaicanhquat = scanner.nextLine();
 
     }
 
